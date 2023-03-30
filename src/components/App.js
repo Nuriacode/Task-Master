@@ -1,24 +1,54 @@
 import "../styles/App.scss";
-import { useState } from "react";
 import Card from "./Card";
 import FrameCalen from "./FrameCalen";
 import Header from "./Header";
+import { useState } from "react";
+
 
 
 function App() {
 
-   const [eventList, setEventList] = useState({
-    title:"",
-    start: new Date(),
-    desc: ""
-   })
+    const [taskList, setTaskList] = useState([])
+    const [dataTask, setDataTask] = useState({
+      title:"",
+      start:"",
+      end: "",
+      desc: ""
+    })
+
+
+
+    const handleInput = (inputName, inputValue) =>{
+      setDataTask({...dataTask, [inputValue] : inputName})
+    }
+  
+    const handleSend = () => {
+      if (dataTask.start !=="" && dataTask.end !=="" && dataTask.title !== "") {
+        setTaskList([...taskList, dataTask])
+        setDataTask({
+          title:"",
+          start:"",
+          end: "",
+          desc: ""
+        })
+      }
+    }
+
+   
 
   return (
     <>
     <Header/>
     <main>
-    <FrameCalen eventList={eventList}/>
-    <Card eventList={eventList}/>
+    <FrameCalen 
+    taskList={taskList}
+    />
+    
+    <Card 
+    dataTask={dataTask}
+    handleChangeInput={handleInput}
+    handleSend={handleSend}
+    />
     </main>
     </>
   );

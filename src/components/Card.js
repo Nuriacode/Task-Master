@@ -1,9 +1,21 @@
 import "../styles/Card.scss";
-const Card = ({eventList}) => {
+
+
+const Card = ({handleChangeInput, dataTask, handleSend}) => {
 
     const handleSubmit = (ev) => {
     ev.preventDefault();
   };
+
+  const changeInput = (ev) => {
+    const inputValue = ev.target.value;
+    const inputName = ev.target.name;
+    handleChangeInput (inputValue, inputName);
+  }
+
+  const createTask = () => {
+    handleSend();
+  } 
 
   return (
     <section className="form" >
@@ -13,25 +25,44 @@ const Card = ({eventList}) => {
         <input 
         required 
         type="text" 
-        placeholder="Hacer la compra."
-        name="title" 
+        placeholder="Hacer la compra"
+        name="title"
         id="title"
-        value={eventList.title}
-        onChange={changeInput}
+        value={dataTask.title}
+        onInput={changeInput}
         />
       </label>
       <label className="form__label" htmlFor="">
         Fecha de Inicio
-        <input required type="text" placeholder="2023, 3, 29" />
+        <input 
+        required 
+        type="text" 
+        placeholder="2023, 3, 29" 
+        name="start"
+        id="start"
+        value={dataTask.start}
+        onInput={changeInput}
+        />
       </label>
-      <label className="form__label" htmlFor="house">
+      <label className="form__label" htmlFor="">
+        Fecha de Fin
+        <input 
+        required 
+        type="text" 
+        placeholder="2023, 03, 29"
+        name="end"
+        id="end"
+        value={dataTask.end}
+        onInput={changeInput}/>
+      </label>
+      {/* <label className="form__label" htmlFor="house">
         Seleciona el tipo de tarea
         <select name="color">
           <option value="Ocio">Ocio</option>
           <option value="Trabajo">Trabajo</option>
           <option value="Casa">Casa</option>
         </select>
-      </label>
+      </label> */}
       <label className="form__label" htmlFor="desc">
         Descripción
         <textarea
@@ -39,9 +70,15 @@ const Card = ({eventList}) => {
           placeholder="Lista de la compra"
           name="desc"
           id="desc"
+          value={dataTask.desc}
+          onInput={changeInput}
         ></textarea>
       </label>
-      <input className="form__button" type="submit" value="AÑADIR TAREA" />
+      <input 
+      className="form__button" 
+      type="submit" 
+      value="AÑADIR TAREA"
+      onClick={createTask} />
        </form>
     </section>
   );
