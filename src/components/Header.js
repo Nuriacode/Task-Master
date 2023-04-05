@@ -1,7 +1,9 @@
+import logo from "../images/logo.svg"
+import '../styles/Header.scss'
 const Header = () => {
     return(
-        <header>
-            <h1>task master</h1>
+        <header className="header">
+            <img className="header__img" src={logo} alt="logo taska master"/>
         </header>
     )
 }

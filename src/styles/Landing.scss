@@ -1,4 +1,79 @@
-.btn{
-    color: black;
-    background-color: black;
+.mainLanding {
+  background-color: #026f7b;
+  min-height: 75vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &__content {
+    min-width: 70vw;
+    background-color: rgba(0, 87, 110, 0.69);
+    min-height: 50vh;
+    border-radius: 30px;
+    box-shadow: 0px 5px 15px #191919e3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &__title {
+      color: white;
+      font-size: 35px;
+      margin-top: 100px;
+    }
+
+    &__user {
+      color: white;
+      font-size: 25px;
+      margin-top: 100px;
+      background-color: rgba(255, 255, 255, 0.46);
+      width: 250px;
+      height: 80px;
+      border-radius: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    &__password {
+      color: white;
+      font-size: 25px;
+      margin-top: 50px;
+      background-color: rgba(255, 255, 255, 0.46);
+      width: 250px;
+      height: 80px;
+      border-radius: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    &__login {
+      font-size: 25px;
+      margin-top: 85px;
+      background-color: rgba(255, 192, 118, 1);
+      width: 200px;
+      height: 80px;
+      border-radius: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0px 4px 8px #2a2a2ae3;
+      &--text {
+        text-decoration: none;
+        color: white;
+      }
+    }
+    &__signup {
+      color: white;
+      font-size: 23px;
+      margin-top: 120px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+  }
 }

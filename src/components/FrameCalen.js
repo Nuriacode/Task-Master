@@ -46,16 +46,23 @@ const FrameCalen = () => {
   };
 
   return (
-    <section className="App">
+    <section className="app">
       <Calendar
         className="frameCalen"
         localizer={localizer}
         defaultDate={new Date()}
         defaultView="month"
         events={taskList}
-        style={{ margin: "20px" }}
+        
       />
-      <OpenButton openTask={openTask} handleClickButton={handleClickButton} />
+      <OpenButton 
+      openTask={openTask} 
+      handleClickButton={handleClickButton}
+      modalCard={modalCard}
+        handleClickModal={handleClickModal}
+        dataTask={dataTask}
+        handleChangeInput={handleInput}
+        handleSend={handleSend} />
       <Card
         modalCard={modalCard}
         handleClickModal={handleClickModal}

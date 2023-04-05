@@ -1,18 +1,20 @@
-import '../styles/OpenButton.scss';
+import "../styles/OpenButton.scss";
 
-const OpenButton = ({openTask, handleClickButton}) => {
+const OpenButton = ({ openTask, handleClickButton }) => {
+  // const handleClick = () => {
+  //     return form.remove("hidden");
+  // }
 
-    // const handleClick = () => {
-    //     return form.remove("hidden");
-    // }
-    
-    return(
-    <button 
-    type="button" 
-    class="btn btn-outline-danger"
-        onClick={handleClickButton}
-    >+</button>
-    )
-}
+  return (
+    <section>
+      <label
+        type="button"
+        className="btn btn-outline-danger"
+        onClick={handleClickButton}>
+        Crea un nuevo proyecto
+      </label>
+    </section>
+  );
+};
 
 export default OpenButton;
