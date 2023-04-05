@@ -1,55 +1,22 @@
 import "../styles/App.scss";
-import Card from "./Card";
 import FrameCalen from "./FrameCalen";
 import Header from "./Header";
-import { useState } from "react";
-
+import { Routes, Route } from "react-router-dom";
+import Footer from "./Footer";
+import Landing from "./Landing";
 
 
 function App() {
-
-    const [taskList, setTaskList] = useState([])
-    const [dataTask, setDataTask] = useState({
-      title:"",
-      start:"",
-      end: "",
-      desc: ""
-    })
-
-
-
-    const handleInput = (inputName, inputValue) =>{
-      setDataTask({...dataTask, [inputValue] : inputName})
-    }
-  
-    const handleSend = () => {
-      if (dataTask.start !=="" && dataTask.end !=="" && dataTask.title !== "") {
-        setTaskList([...taskList, dataTask])
-        setDataTask({
-          title:"",
-          start:"",
-          end: "",
-          desc: ""
-        })
-      }
-    }
-
-   
-
   return (
     <>
-    <Header/>
-    <main>
-    <FrameCalen 
-    taskList={taskList}
-    />
-    
-    <Card 
-    dataTask={dataTask}
-    handleChangeInput={handleInput}
-    handleSend={handleSend}
-    />
-    </main>
+      <Header/>
+      <Routes>
+        <Route 
+        path="/createtask" element={<FrameCalen/>} />
+
+        <Route path="/" element={<Landing />} />
+      </Routes>
+      <Footer/>
     </>
   );
 }
