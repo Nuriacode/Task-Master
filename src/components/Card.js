@@ -4,8 +4,6 @@ const Card = ({
   handleChangeInput,
   dataTask,
   handleSend,
-  modalCard,
-  handleClickModal,
 }) => {
   const handleSubmit = (ev) => {
     ev.preventDefault();
@@ -22,26 +20,26 @@ const Card = ({
   };
 
   return (
-    // <div className={"modal " + (modalCard === true ? null : "hidden")}>
     <div>
       <div className="modal__dialog">
         <div className="modal__content">
-          <span className="modal__content__close" onClick={handleClickModal}>
-            X
-          </span>
           <form className="modal__content__form" onSubmit={handleSubmit}>
-            <label className="form__label" htmlFor="title">
+            <div className="form-floating mb-3">
+               <label  htmlFor="floatingInput">
               Tarea
-              <input
+            </label>
+            <input
+                className="form-control"
                 required
                 type="text"
-                placeholder="Hacer la compra"
+                placeholder="Escribe aquí la tarea"
                 name="title"
-                id="title"
+                id="floatingInput"
                 value={dataTask.title}
                 onInput={changeInput}
               />
-            </label>
+           
+            </div>
             <label className="form__label" htmlFor="">
               Fecha de Inicio
               <input

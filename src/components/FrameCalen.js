@@ -1,33 +1,27 @@
 import { Calendar, momentLocalizer } from "react-big-calendar";
 import { useState } from "react";
 import moment from "moment";
+import 'moment/locale/es';
+import 'moment-timezone';
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import "../styles/frameCalen.scss";
-import OpenButton from "./OpenButton";
 import Card from "./Card";
 
+moment.tz.names("Europe/Paris|Europe/Monaco");
 const localizer = momentLocalizer(moment);
-
+moment.locale('es');
+moment.tz.link("Europe/Paris|Europe/Monaco");
 const FrameCalen = () => {
-
+  
+ 
   const [taskList, setTaskList] = useState([]);
   const [dataTask, setDataTask] = useState({
     title: "",
-    start: "",
+    start: "",  
     end: "",
     desc: "",
   });
 
-  const [modalCard, setModalCard] = useState(false);
-  const [openTask, setOpenTask] = useState(true);
-
-  const handleClickModal = (ev) => {
-    setModalCard(true);
-  };
-
-  const handleClickButton = (ev) => {
-    setOpenTask(false);
-  };
 
   const handleInput = (inputName, inputValue) => {
     setDataTask({ ...dataTask, [inputValue]: inputName });
@@ -48,24 +42,13 @@ const FrameCalen = () => {
   return (
     <section className="app">
       <Calendar
-        className="frameCalen"
+        className="app__frameCalen"
         localizer={localizer}
         defaultDate={new Date()}
         defaultView="month"
         events={taskList}
-        
       />
-      <OpenButton 
-      openTask={openTask} 
-      handleClickButton={handleClickButton}
-      modalCard={modalCard}
-        handleClickModal={handleClickModal}
-        dataTask={dataTask}
-        handleChangeInput={handleInput}
-        handleSend={handleSend} />
       <Card
-        modalCard={modalCard}
-        handleClickModal={handleClickModal}
         dataTask={dataTask}
         handleChangeInput={handleInput}
         handleSend={handleSend}

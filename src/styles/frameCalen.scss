@@ -1,13 +1,35 @@
 .app{
     background-color: #026f7b;
     padding: 20px;
+    font-family: 'Nunito', sans-serif;
+
+    &__frameCalen {
+            height: 90vh;
+            background-color: white;
+            padding: 15px;
+            border-radius: 20px;
+            height: 60vh;
+        }
 }
 
-.frameCalen{
-    height: 90vh;
-    background-color: white;
-    padding: 15px;
-    border-radius: 20px;
-    height: 60vh;
+.rbc-toolbar{
+    font-family: 'Nunito', sans-serif;
+}
+.rbc-toolbar-label{
+    font-size: 1rem;
+}
+.rbc-btn-group{
+    font-family: 'Nunito', sans-serif;
 }
 
+.rbc-active{
+    display: none;
+}
+
+.rbc-event{
+    background-color: #026f7b;
+}
+
+.rbc-today{
+    background-color: #e2ca9d;
+}
