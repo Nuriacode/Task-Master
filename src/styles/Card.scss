@@ -1,47 +1,73 @@
 .modal {
+  font-family: 'Nunito', sans-serif;
   background-color: rgb(158, 165, 167);
-position: fixed;
-z-index: 1px;
-
-  &__dialog {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border: 3px solid black;
-    }
+  width: 30%;
 
     &__content {
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      justify-content: flex-start;
 
-      &__close{
-        position: relative;
-      }
 
       &__form {
+        width: 70vw ;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
         background-color: white;
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
         align-items: center;
-        margin-top: 30px;
+        margin-top: 2rem;
         margin-bottom: 30px;
-        border: 3px solid rgb(117, 44, 44);
+        border-radius: 15px;
+        box-shadow: 0px 5px 15px #191919e3;
+        gap:1rem;
 
         &__label {
-          display: flex;
-          flex-direction: column;
+          font-size: 0.8rem;
         }
 
         &__button {
           margin-top: 5px;
+          border:none;
+            background-color: rgba(255, 192, 118, 1);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0px 3px 4px #868686e3;
+            width: 8rem;
+            height: 3em;
+            border-radius: 13px;
+            font-size: 0.8rem;
         }
+
+                &__div {
+                  font-size: 0.8rem;
+                  align-items: center;
+                  &--input{
+                    cursor: pointer;
+
+                  }
+                }
       }
+      
     }
 
 }
 
 .hidden{
     display: none;
+}
+.color_1 {
+  background-color: aqua;
+}
+
+.color_2 {
+  background-color: rgb(225, 0, 255);
+}
+
+.color_3 {
+  background-color: rgb(191, 255, 0);
 }

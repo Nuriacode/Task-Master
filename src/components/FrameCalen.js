@@ -11,6 +11,9 @@ moment.tz.names("Europe/Paris|Europe/Monaco");
 const localizer = momentLocalizer(moment);
 moment.locale('es');
 moment.tz.link("Europe/Paris|Europe/Monaco");
+
+
+
 const FrameCalen = () => {
   
  
@@ -22,10 +25,31 @@ const FrameCalen = () => {
     desc: "",
   });
 
+  const [taskType, setTaskType] = useState('');
+  const [colorTask, setColorTask]= useState('');
+
+
+  const setTaskTypeRadio = (value) =>{
+    setTaskType(value)
+
+    
+  }
 
   const handleInput = (inputName, inputValue) => {
     setDataTask({ ...dataTask, [inputValue]: inputName });
   };
+
+  const colorTaksFunction = () =>{
+    if (taskType==='Casa'){
+      setColorTask('color_1')
+    }
+    if (taskType==='Ocio'){
+      setColorTask('color_2')
+    }
+    if(taskType==='Trabajo'){
+      setColorTask('color_3')
+    }
+  }
 
   const handleSend = () => {
     if (dataTask.start !== "" && dataTask.end !== "" && dataTask.title !== "") {
@@ -38,6 +62,8 @@ const FrameCalen = () => {
       });
     }
   };
+
+
 
   return (
     <section className="app">
@@ -52,6 +78,10 @@ const FrameCalen = () => {
         dataTask={dataTask}
         handleChangeInput={handleInput}
         handleSend={handleSend}
+        setTaskTypeRadio={setTaskTypeRadio}
+        taskType={taskType}
+        colorsTaks={colorTask}
+        colorTaksFunction={colorTaksFunction}
       />
     </section>
   );
