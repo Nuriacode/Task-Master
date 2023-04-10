@@ -7,6 +7,7 @@ import "react-big-calendar/lib/css/react-big-calendar.css";
 import "../styles/frameCalen.scss";
 import Card from "./Card";
 
+
 moment.tz.names("Europe/Paris|Europe/Monaco");
 const localizer = momentLocalizer(moment);
 moment.locale('es');
@@ -31,25 +32,25 @@ const FrameCalen = () => {
 
   const setTaskTypeRadio = (value) =>{
     setTaskType(value)
-
-    
+    if (taskType==='Casa'){
+      setColorTask('color_1')
+    } else if (taskType==='Ocio'){
+      setColorTask('color_2')
+    } else if (taskType==='Trabajo'){
+      setColorTask('color_3')
+    }
   }
+
 
   const handleInput = (inputName, inputValue) => {
     setDataTask({ ...dataTask, [inputValue]: inputName });
   };
 
-  const colorTaksFunction = () =>{
-    if (taskType==='Casa'){
-      setColorTask('color_1')
-    }
-    if (taskType==='Ocio'){
-      setColorTask('color_2')
-    }
-    if(taskType==='Trabajo'){
-      setColorTask('color_3')
-    }
-  }
+ 
+
+  
+
+  
 
   const handleSend = () => {
     if (dataTask.start !== "" && dataTask.end !== "" && dataTask.title !== "") {
@@ -74,14 +75,16 @@ const FrameCalen = () => {
         defaultView="month"
         events={taskList}
       />
+      <h2>TAREAS POR HACER</h2>
+      <h2>TAREAS HECHAS</h2>
       <Card
+        className={colorTask}
         dataTask={dataTask}
         handleChangeInput={handleInput}
         handleSend={handleSend}
         setTaskTypeRadio={setTaskTypeRadio}
         taskType={taskType}
-        colorsTaks={colorTask}
-        colorTaksFunction={colorTaksFunction}
+        colorTask={colorTask}
       />
     </section>
   );

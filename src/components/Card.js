@@ -6,8 +6,8 @@ const Card = ({
   handleSend,
   taskType,
   setTaskTypeRadio,
-  colorTask,
-  colorTaksFunction
+  
+
 }) => {
   const handleSubmit = (ev) => {
     ev.preventDefault();
@@ -17,7 +17,6 @@ const Card = ({
     const inputValue = ev.target.value;
     const inputName = ev.target.name;
     handleChangeInput(inputValue, inputName);
-    colorTaksFunction()
   };
 
   const changeRadioInput = (ev) => {
@@ -30,7 +29,7 @@ const Card = ({
 
   return (
     <div className="modal__content">
-      <form className= {`modal__content__form ${colorTask}`}
+      <form className={`modal__content__form `}
       onSubmit={handleSubmit}>
         <div className="form-floating mb-3">
           <label
@@ -86,25 +85,26 @@ const Card = ({
             value="Casa"
             onClick={changeRadioInput}
           />
-          <label className="modal__content__div--label" htmlFor="Mujer">
+          <label className="modal__content__div--label" htmlFor="Casa">
             Casa
           </label>
           <input
             checked={taskType === "Ocio"}
-            id="Mujer"
+            className="modal__content__div--input"
+            id="entertainment"
             onClick={changeRadioInput}
-            name="gender"
+            name="taskType"
             type="radio"
             value="Ocio"
           />
-          <label className="modal__content__div--label" htmlFor="Mujer">
+          <label className="modal__content__div--label" htmlFor="Ocio">
             Ocio
           </label>
           <input
             checked={taskType === "Trabajo"}
-            id="Mujer"
+            id="work"
             onClick={changeRadioInput}
-            name="gender"
+            name="taskType"
             type="radio"
             value="Trabajo"
           />

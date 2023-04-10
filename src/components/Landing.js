@@ -7,10 +7,10 @@ function Landing() {
       <section className="mainLanding__content">
         <h3 className="mainLanding__content__title">Login</h3>
         <label className="mainLanding__content__user">
-          <i class="fa-solid fa-user"></i>
+          <i className="fa-solid fa-user"></i>
           Username
         </label>
-        <label className="mainLanding__content__password"><i class="fa-solid fa-lock"></i>Password</label>
+        <label className="mainLanding__content__password"><i className="fa-solid fa-lock"></i>Password</label>
         <label className="mainLanding__content__login">
           <Link className="mainLanding__content__login--text" to="/createtask">
             Login
