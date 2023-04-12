@@ -24,21 +24,24 @@ const FrameCalen = () => {
     start: "",  
     end: "",
     desc: "",
+    type: ""
   });
 
-  const [taskType, setTaskType] = useState('');
-  const [colorTask, setColorTask]= useState('');
+  //const [taskType, setTaskType] = useState('');
+  //const [colorTask, setColorTask]= useState('');
 
 
   const setTaskTypeRadio = (value) =>{
-    setTaskType(value)
-    if (taskType==='Casa'){
+    setDataTask({...dataTask, type: value})
+    /*
+    if (value==='Casa'){
       setColorTask('color_1')
-    } else if (taskType==='Ocio'){
+    } else if (value==='Ocio'){
       setColorTask('color_2')
-    } else if (taskType==='Trabajo'){
+    } else if (value==='Trabajo'){
       setColorTask('color_3')
     }
+    */
   }
 
 
@@ -78,13 +81,13 @@ const FrameCalen = () => {
       <h2>TAREAS POR HACER</h2>
       <h2>TAREAS HECHAS</h2>
       <Card
-        className={colorTask}
+        /*className={colorTask}*/
         dataTask={dataTask}
         handleChangeInput={handleInput}
         handleSend={handleSend}
         setTaskTypeRadio={setTaskTypeRadio}
-        taskType={taskType}
-        colorTask={colorTask}
+        taskType={dataTask.type}
+        /*colorTask={colorTask}*/
       />
     </section>
   );

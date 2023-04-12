@@ -6,7 +6,7 @@ const Card = ({
   handleSend,
   taskType,
   setTaskTypeRadio,
-  
+  //colorTask
 
 }) => {
   const handleSubmit = (ev) => {
@@ -27,9 +27,19 @@ const Card = ({
     handleSend();
   };
 
+  const getColorTask = (taskType) => {
+    if (taskType==='Casa'){
+      return 'color_1';
+    } else if (taskType==='Ocio'){
+      return 'color_2';
+    } else if (taskType==='Trabajo'){
+      return 'color_3';
+    }
+  }
+
   return (
     <div className="modal__content">
-      <form className={`modal__content__form `}
+      <form className={`modal__content__form `+getColorTask(taskType)}
       onSubmit={handleSubmit}>
         <div className="form-floating mb-3">
           <label
