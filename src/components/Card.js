@@ -6,7 +6,6 @@ const Card = ({
   handleSend,
   taskType,
   setTaskTypeRadio,
-  //colorTask
 
 }) => {
   const handleSubmit = (ev) => {

@@ -6,6 +6,7 @@ import 'moment-timezone';
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import "../styles/frameCalen.scss";
 import Card from "./Card";
+import TaskList from "./TaskList";
 
 
 moment.tz.names("Europe/Paris|Europe/Monaco");
@@ -63,6 +64,7 @@ const FrameCalen = () => {
         start: "",
         end: "",
         desc: "",
+        type: ""
       });
     }
   };
@@ -79,6 +81,9 @@ const FrameCalen = () => {
         events={taskList}
       />
       <h2>TAREAS POR HACER</h2>
+      <TaskList
+      taskList={taskList}
+      />
       <h2>TAREAS HECHAS</h2>
       <Card
         /*className={colorTask}*/

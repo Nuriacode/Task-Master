@@ -1,11 +1,22 @@
-const Task = () =>{
-    
+import '../styles/Task.scss'
+
+const Task = ({eachTask}) =>{
+
+    const getColorTask = (taskType) => {
+    if (taskType==='Casa'){
+      return 'color_1';
+    } else if (taskType==='Ocio'){
+      return 'color_2';
+    } else if (taskType==='Trabajo'){
+      return 'color_3';
+    }
+  }
     return(
-        <article>
+        <article className={getColorTask(eachTask.type)} >
             <div>
-                <h3>Tarea de ejemplo</h3>
-                <p>25-04-2023</p>
-                <p>Lista de la compra</p>
+                <h3>{eachTask.title}</h3>
+                <p>{eachTask.start}</p>
+                <p>{eachTask.desc}</p>
             </div>
         </article>
     )
