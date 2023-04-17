@@ -7,7 +7,7 @@ import "react-big-calendar/lib/css/react-big-calendar.css";
 import "../styles/frameCalen.scss";
 import Card from "./Card";
 import TaskList from "./TaskList";
-import TaskListDone from "./TaskListDone";
+import TaskListDoneComponent from "./TaskListDoneComponent";
 
 
 moment.tz.names("Europe/Paris|Europe/Monaco");
@@ -20,7 +20,6 @@ moment.tz.link("Europe/Paris|Europe/Monaco");
 const FrameCalen = () => {
   
   const [id, setId] = useState(0 + 1)
-  const [taskList, setTaskList] = useState([]);
   const [dataTask, setDataTask] = useState({
     title: "",
     start: "",  
@@ -30,10 +29,11 @@ const FrameCalen = () => {
     done:false,
     id: 0,
   });
-    const [taskListDone, setTaskListDone] = useState([]);
+  const [taskList, setTaskList] = useState([]);
+  const [taskListDone, setTaskListDone] = useState([]);
     
 
-    const createId = () => {
+  const createId = () => {
       setId(id + 1)
       console.log(id)
     }
@@ -42,15 +42,14 @@ const FrameCalen = () => {
     setDataTask({...dataTask, type: value})
   }
 
-  const setTaskDone = (index) =>{
-    console.log(index)
-    console.log(taskList[index])
-    taskList[index].done = true
+  const setTaskDone = (id) =>{
+    taskList[id].done = true;
     console.log(taskList)
-    const tasksToDone = taskList.splice(index, 1)
-    //  setTaskList([...tasksToDone])
-    //  setTaskListDone([...taskListDone, taskList])
-    //  console.log(taskListDone)
+    const taskDone = taskList[id]
+    console.log(taskDone)
+    setTaskListDone([...taskListDone, taskDone])
+    console.log(taskListDone)
+   
   }  
   
 
@@ -96,19 +95,25 @@ const FrameCalen = () => {
         defaultView="month"
         events={taskList}
       />
-      <h2>TAREAS POR HACER</h2>
+      <h2 className="app__titleTask">TAREAS POR HACER</h2>
       <TaskList
+      className="app__taskList"
       setTaskDone={setTaskDone}
       taskList={taskList}
       getColorTask={getColorTask}
       />
-      <h2>TAREAS HECHAS</h2>
-      <TaskListDone
+      <h2
+      className="app__titleTask"
+      >TAREAS HECHAS</h2>
+      <TaskListDoneComponent
+      className="app__taskListDone"
+      getColorTask={getColorTask}
       taskListDone={taskListDone}
       />
       {/* <TaskListDone
       setTaskDone={setTaskDone}/> */}
       <Card
+         className="app__card"
         dataTask={dataTask}
         handleChangeInput={handleInput}
         handleSend={handleSend}

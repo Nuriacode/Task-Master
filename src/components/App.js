@@ -9,11 +9,12 @@ import Landing from "./Landing";
 function App() {
   return (
     <>
-      <Header/>
+      <Header
+      className='header'/>
       <Routes>
         <Route 
         path="/createtask" 
-        element={<FrameCalen/>} />
+        element={<FrameCalen className='allCalendar'/>} />
 
         <Route path="/" element={<Landing />} />
       </Routes>

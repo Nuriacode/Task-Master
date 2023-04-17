@@ -2,15 +2,14 @@ import Task from "../components/Task";
 
 function TaskList({taskList, getColorTask, setTaskDone}) {
 
-  const task=taskList.map((eachTask, index) =>{
+  const task=taskList.map((eachTask) =>{
 
    
 
 
     return (
-      <li key={index}>
+      <li key={eachTask.id}>
         <Task
-        index={index}
         getColorTask={getColorTask}
         eachTask={eachTask}
         setTaskDone={setTaskDone}

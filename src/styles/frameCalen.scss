@@ -5,6 +5,7 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
+    align-items: center;
 
     &__frameCalen {
             height: 90vh;
@@ -13,6 +14,12 @@
             border-radius: 20px;
             height: 60vh;
         }
+    
+    &__titleTask{
+        color: white;
+        align-self: flex-start;
+    }
+    
 }
 
 .rbc-toolbar{
