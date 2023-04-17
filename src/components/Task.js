@@ -1,18 +1,21 @@
 import '../styles/Task.scss'
 
-const Task = ({eachTask}) =>{
+const Task = ({eachTask, getColorTask, setTaskDone, index}) =>{
 
-    const getColorTask = (taskType) => {
-    if (taskType==='Casa'){
-      return 'color_1';
-    } else if (taskType==='Ocio'){
-      return 'color_2';
-    } else if (taskType==='Trabajo'){
-      return 'color_3';
+   const handleClick =(ev)=>{
+    const target = ev.currentTarget.id
+    console.log(target)
+   setTaskDone(target)
+   
     }
-  }
+  
+
     return(
-        <article className={getColorTask(eachTask.type)} >
+        <article 
+        className={getColorTask(eachTask.type)} 
+        onClick={handleClick}
+        index={index}
+        >
             <div>
                 <h3>{eachTask.title}</h3>
                 <p>{eachTask.start}</p>
