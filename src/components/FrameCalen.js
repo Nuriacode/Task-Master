@@ -8,6 +8,8 @@ import "../styles/frameCalen.scss";
 import Card from "./Card";
 import TaskList from "./TaskList";
 import TaskListDoneComponent from "./TaskListDoneComponent";
+import ButtonReset from "./Reset";
+import objectToExport from "../services/localStorage";
 
 
 moment.tz.names("Europe/Paris|Europe/Monaco");
@@ -31,6 +33,7 @@ const FrameCalen = () => {
   });
   const [taskList, setTaskList] = useState([]);
   const [taskListDone, setTaskListDone] = useState([]);
+  const taskLocalStorage = objectToExport.get("tasks", [])
     
 
   const createId = () => {
@@ -49,8 +52,11 @@ const FrameCalen = () => {
     console.log(taskDone)
     setTaskListDone([...taskListDone, taskDone])
     console.log(taskListDone)
-   
   }  
+
+  const removeTask = (id) => {
+    taskList.splice((id, 1));
+  }
   
 
 
@@ -81,6 +87,8 @@ const FrameCalen = () => {
         done: false,
         id: id
       });
+      taskLocalStorage.push(taskList);
+      objectToExport.set("tasks", taskLocalStorage)
     }
   };
 
@@ -97,6 +105,7 @@ const FrameCalen = () => {
       />
       <h2 className="app__titleTask">TAREAS POR HACER</h2>
       <TaskList
+      removeTask={removeTask}
       className="app__taskList"
       setTaskDone={setTaskDone}
       taskList={taskList}
@@ -110,8 +119,7 @@ const FrameCalen = () => {
       getColorTask={getColorTask}
       taskListDone={taskListDone}
       />
-      {/* <TaskListDone
-      setTaskDone={setTaskDone}/> */}
+      <ButtonReset/>
       <Card
          className="app__card"
         dataTask={dataTask}
