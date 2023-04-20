@@ -31,9 +31,10 @@ const FrameCalen = () => {
     done:false,
     id: 0,
   });
+  // const [taskList, setTaskList] = useState(objectToExport.get("tasks", []));
   const [taskList, setTaskList] = useState([]);
   const [taskListDone, setTaskListDone] = useState([]);
-  const taskLocalStorage = objectToExport.get("tasks", [])
+  // const taskLocalStorage = objectToExport.get("tasks", [])
     
 
   const createId = () => {
@@ -47,10 +48,14 @@ const FrameCalen = () => {
 
   const setTaskDone = (id) =>{
     taskList[id].done = true;
+    taskList.splice((id, 1));
     console.log(taskList)
     const taskDone = taskList[id]
     console.log(taskDone)
     setTaskListDone([...taskListDone, taskDone])
+    // objectToExport.remove("tasks")
+    // console.log(taskList)
+    // objectToExport.set("tasks", taskList)
     console.log(taskListDone)
   }  
 
@@ -87,8 +92,8 @@ const FrameCalen = () => {
         done: false,
         id: id
       });
-      taskLocalStorage.push(taskList);
-      objectToExport.set("tasks", taskLocalStorage)
+      // taskLocalStorage.push(dataTask);
+      // objectToExport.set("tasks", taskLocalStorage)
     }
   };
 
