@@ -40,7 +40,6 @@ const FrameCalen = () => {
 
   const createId = () => {
       setId(id + 1)
-      console.log(id)
     }
 
   const setTaskTypeRadio = (value) =>{
