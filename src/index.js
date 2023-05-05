@@ -1,14 +1,15 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import App from './components/App';
-import {HashRouter} from 'react-router-dom';
-import './styles/core/reset.scss'
+//crear y configurar el sercidor
+const express= require('express');
+const cors =  require('cors');
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <HashRouter>
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-  </HashRouter>
-);
+const app = express();
+
+app.use(cors());
+app.use(express.json({limit:'25mb'}));
+
+const port = process.env.PORT || 4000;
+
+app.listen(port, ()=>{
+    console.log('servidor a su servicio en el puerto', port);
+});
+
