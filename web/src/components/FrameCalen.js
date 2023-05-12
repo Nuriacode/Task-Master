@@ -1,5 +1,5 @@
 import { Calendar, momentLocalizer } from "react-big-calendar";
-import { useState, useId } from "react";
+import { useState } from "react";
 import moment from "moment";
 import 'moment/locale/es';
 import 'moment-timezone';
@@ -99,6 +99,7 @@ const FrameCalen = () => {
 
   return (
     <>
+    <div className="all">
     <section className="app">
       <Calendar
         className="app__frameCalen"
@@ -136,6 +137,7 @@ const FrameCalen = () => {
         getColorTask={getColorTask}
       />
       </section>
+      </div>
     </>
   );
 };

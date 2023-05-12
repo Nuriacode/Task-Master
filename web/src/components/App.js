@@ -15,7 +15,7 @@ function App() {
       <Routes>
         <Route 
         path="/createtask" 
-        element={<FrameCalen className='allCalendar'/>} />
+        element={<FrameCalen/>} />
 
         <Route path="/" element={<Landing />} />
       </Routes>
