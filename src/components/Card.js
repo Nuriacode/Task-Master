@@ -38,6 +38,7 @@ const Card = ({
           >
             Tarea
           </label>
+          
           <input
             className="form-control"
             required
@@ -55,7 +56,7 @@ const Card = ({
             className="form-control"
             required
             type="text"
-            placeholder="2023, 3, 29"
+            placeholder="2023, 03, 29"
             name="start"
             id="start"
             value={dataTask.start}

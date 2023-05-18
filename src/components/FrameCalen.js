@@ -32,8 +32,9 @@ const FrameCalen = () => {
     id: 0,
   });
   const [taskList, setTaskList] = useState(objectToExport.get("tasks", []));
-  // const [taskList, setTaskList] = useState([]);
+  
   const [taskListDone, setTaskListDone] = useState(objectToExport.get("tasks_Done",[]));
+
   const taskLocalStorage = objectToExport.get("tasks", [])
   const taskDoneLocalStorage = objectToExport.get("tasks_Done",[])
     
@@ -61,8 +62,6 @@ const FrameCalen = () => {
     taskList.splice((id, 1));
   }
   
-
-
   const handleInput = (inputName, inputValue) => {
     setDataTask({ ...dataTask, [inputValue]: inputName });
   };
@@ -74,7 +73,7 @@ const FrameCalen = () => {
       return 'color_2';
     } else if (taskType==='Trabajo'){
       return 'color_3';
-    }
+    } 
   }
 
   const handleSend = () => {
@@ -95,7 +94,21 @@ const FrameCalen = () => {
     }
   };
 
-
+  function resetButton () {
+    objectToExport.remove("tasks");
+    objectToExport.remove("tasks_Done");
+    setTaskList([""])
+    setDataTask({
+        title: "",
+        start: "",
+        end: "",
+        desc: "",
+        type: "",
+        done: false,
+        id: id
+      });
+    setTaskListDone([""])
+  };
 
   return (
     <>
@@ -126,7 +139,9 @@ const FrameCalen = () => {
       getColorTask={getColorTask}
       taskListDone={taskListDone}
       />
-      <ButtonReset/>
+      <ButtonReset
+      resetButton={resetButton}
+      />
       <Card
         className="form__card"
         dataTask={dataTask}

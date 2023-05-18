@@ -1,10 +1,9 @@
-const ButtonReset = () => {
+const ButtonReset = ({resetButton}) => {
 
-  const handleClickReset = () => {
-    
+  const handleClickReset = (ev) => {
+   ev.preventDefault();
+   resetButton();
   }
-
-
 
     return (
         <input
