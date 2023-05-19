@@ -6,7 +6,7 @@ const Card = ({
   handleSend,
   taskType,
   setTaskTypeRadio,
-  getColorTask
+  getColorTask,
 }) => {
   const handleSubmit = (ev) => {
     ev.preventDefault();
@@ -26,11 +26,12 @@ const Card = ({
     handleSend();
   };
 
-
   return (
     <div className="modal__content">
-      <form className={`modal__content__form `+ getColorTask(taskType)}
-      onSubmit={handleSubmit}>
+      <form
+        className={`modal__content__form ` + getColorTask(taskType)}
+        onSubmit={handleSubmit}
+      >
         <div className="form-floating mb-3">
           <label
             className="modal__content__form__label"
@@ -38,7 +39,7 @@ const Card = ({
           >
             Tarea
           </label>
-          
+
           <input
             className="form-control"
             required
