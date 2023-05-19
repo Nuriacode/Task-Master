@@ -22,7 +22,7 @@
         margin-top: 2rem;
         margin-bottom: 30px;
         border-radius: 15px;
-        box-shadow: 0px 5px 15px #393939e3;
+        box-shadow: 0px 3px 10px #191919e3;
         gap:1rem;
         
         @media all and (min-width: 768px) {
@@ -33,6 +33,10 @@
           font-size: 0.8rem;
         }
 
+        &__icon{
+          color: rgba(255, 192, 118, 1);
+        }
+
         &__button {
           margin-top: 5px;
           border:none;
@@ -41,7 +45,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            box-shadow: 0px 3px 4px #868686e3;
+            box-shadow: 0px 4px 5px #191919e3;
             width: 8rem;
             height: 3em;
             border-radius: 13px;

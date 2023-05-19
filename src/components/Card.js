@@ -39,7 +39,6 @@ const Card = ({
           >
             Tarea
           </label>
-
           <input
             className="form-control"
             required
@@ -119,7 +118,7 @@ const Card = ({
           <textarea
             className="form-control"
             type="text"
-            placeholder="Lista de la compra"
+            placeholder="..."
             name="desc"
             id="desc"
             value={dataTask.desc}

@@ -14,7 +14,8 @@ import objectToExport from "../services/localStorage";
 moment.tz.names("Europe/Paris|Europe/Monaco");
 const localizer = momentLocalizer(moment);
 moment.locale("es");
-moment.tz.link("Europe/Paris|Europe/Monaco");
+moment.tz.setDefault('Europe/Paris')
+moment.tz.countries()
 
 const FrameCalen = () => {
   const [id, setId] = useState(0 + 1);
@@ -37,7 +38,7 @@ const FrameCalen = () => {
   const taskDoneLocalStorage = objectToExport.get("tasks_Done", []);
 
   const createId = () => {
-    setId(id + 1);
+    setId(id);
   };
 
   const setTaskTypeRadio = (value) => {
@@ -72,6 +73,7 @@ const FrameCalen = () => {
       return "color_3";
     }
   };
+
 
   const handleSend = () => {
     if (dataTask.start !== "" && dataTask.end !== "" && dataTask.title !== "") {

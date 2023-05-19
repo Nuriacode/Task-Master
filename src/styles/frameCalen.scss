@@ -8,11 +8,12 @@
 
 
   &__frameCalen {
-    height: 90vh;
+    height: 80vh;
     background-color: white;
     padding: 15px;
     border-radius: 20px;
     height: 60vh;
+    box-shadow: 0px 3px 10px #191919e3;
     @media all and (min-width: 768px) {
         width: 50vw;
         height: 80vh;
@@ -55,9 +56,9 @@
 }
 
 .rbc-event {
-  background-color: #3eb523;
+  background-color: rgb(241, 167, 84);
 }
 
 .rbc-today {
-  background-color: rgba(255, 192, 118, 1);
+  background-color: rgb(247, 187, 118);
 }
