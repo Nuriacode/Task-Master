@@ -1,5 +1,6 @@
 import { Calendar, momentLocalizer } from "react-big-calendar";
-import { useState } from "react";
+import { useState, useId } from "react";
+import {v4 as uuidv4} from 'uuid';
 import moment from "moment";
 import "moment/locale/es";
 import "moment-timezone";
@@ -18,7 +19,7 @@ moment.tz.setDefault('Europe/Paris')
 moment.tz.countries()
 
 const FrameCalen = () => {
-  const [id, setId] = useState(0 + 1);
+  const id=useId();
   const [dataTask, setDataTask] = useState({
     title: "",
     start: "",
@@ -26,7 +27,7 @@ const FrameCalen = () => {
     desc: "",
     type: "",
     done: false,
-    id: 0,
+    id: id,
   });
   const [taskList, setTaskList] = useState(objectToExport.get("tasks", []));
 
@@ -37,9 +38,9 @@ const FrameCalen = () => {
   const taskLocalStorage = objectToExport.get("tasks", []);
   const taskDoneLocalStorage = objectToExport.get("tasks_Done", []);
 
-  const createId = () => {
-    setId(id);
-  };
+  // const createId = () => {
+  //   setId(id);
+  // };
 
   const setTaskTypeRadio = (value) => {
     setDataTask({ ...dataTask, type: value });
@@ -77,7 +78,7 @@ const FrameCalen = () => {
 
   const handleSend = () => {
     if (dataTask.start !== "" && dataTask.end !== "" && dataTask.title !== "") {
-      createId();
+      // createId();
       setTaskList([...taskList, dataTask]);
       setDataTask({
         title: "",
