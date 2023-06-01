@@ -55,8 +55,7 @@ const Card = ({
           <input
             className="form-control"
             required
-            type="text"
-            placeholder="2023, 03, 29"
+            type="date"
             name="start"
             id="start"
             value={dataTask.start}
@@ -68,8 +67,7 @@ const Card = ({
           <input
             className="form-control"
             required
-            type="text"
-            placeholder="2023, 03, 29"
+            type="date"
             name="end"
             id="end"
             value={dataTask.end}

@@ -18,7 +18,7 @@ moment.tz.setDefault('Europe/Paris')
 moment.tz.countries()
 
 const FrameCalen = () => {
-  const [id, setId] = useState(0 + 1);
+  const [id, setId] = useState(0);
   const [dataTask, setDataTask] = useState({
     title: "",
     start: "",
@@ -38,7 +38,7 @@ const FrameCalen = () => {
   const taskDoneLocalStorage = objectToExport.get("tasks_Done", []);
 
   const createId = () => {
-    setId(id);
+    setId(id+1);
   };
 
   const setTaskTypeRadio = (value) => {
@@ -49,7 +49,11 @@ const FrameCalen = () => {
     taskList[id].done = true;
     const taskDone = taskList[id];
     setTaskListDone([...taskListDone, taskDone]);
-    taskList.splice((id, 1));
+
+    const foundIndex = 
+    taskList.indexOf(task => task.id === id)
+    taskList.splice((foundIndex, 1));
+
     objectToExport.remove("tasks");
     taskDoneLocalStorage.push(taskDone);
     objectToExport.set("tasks", taskList);
@@ -57,7 +61,9 @@ const FrameCalen = () => {
   };
 
   const removeTask = (id) => {
-    taskList.splice((id, 1));
+    const foundIndex = 
+    taskList.indexOf(task => task.id === id)
+    taskList.splice((foundIndex, 1));
   };
 
   const handleInput = (inputName, inputValue) => {
