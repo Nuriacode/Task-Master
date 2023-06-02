@@ -1,6 +1,7 @@
 import "../styles/Task.scss";
 
 const TaskListDoneComponent = ({ taskListDone, getColorTask }) => {
+  
   const taskDone = taskListDone.map((eachTaskDone) => {
     return (
       <li key={eachTaskDone.id}>

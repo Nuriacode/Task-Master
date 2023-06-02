@@ -1,5 +1,6 @@
 import { Calendar, momentLocalizer } from "react-big-calendar";
 import { useState } from "react";
+import { v4 as uuidv4 } from 'uuid';
 import moment from "moment";
 import "moment/locale/es";
 import "moment-timezone";
@@ -18,7 +19,8 @@ moment.tz.setDefault('Europe/Paris')
 moment.tz.countries()
 
 const FrameCalen = () => {
-  const [id, setId] = useState(0);
+  const idNumber = uuidv4();
+  // const [id, setId] = useState(0);
   const [dataTask, setDataTask] = useState({
     title: "",
     start: "",
@@ -26,10 +28,10 @@ const FrameCalen = () => {
     desc: "",
     type: "",
     done: false,
-    id: 0,
+    id: idNumber,
   });
-  const [taskList, setTaskList] = useState(objectToExport.get("tasks", []));
 
+  const [taskList, setTaskList] = useState(objectToExport.get("tasks", []));
   const [taskListDone, setTaskListDone] = useState(
     objectToExport.get("tasks_Done", [])
   );
@@ -37,21 +39,21 @@ const FrameCalen = () => {
   const taskLocalStorage = objectToExport.get("tasks", []);
   const taskDoneLocalStorage = objectToExport.get("tasks_Done", []);
 
-  const createId = () => {
-    setId(id+1);
-  };
 
   const setTaskTypeRadio = (value) => {
     setDataTask({ ...dataTask, type: value });
   };
 
   const setTaskDone = (id) => {
-    taskList[id].done = true;
-    const taskDone = taskList[id];
+    console.log(id);
+    const foundIndex = taskList.findIndex(task => task.id === id)
+    console.log(foundIndex);
+    console.log(taskList[foundIndex])
+    taskList[foundIndex].done = true;
+   
+    const taskDone = taskList[foundIndex];
     setTaskListDone([...taskListDone, taskDone]);
-
-    const foundIndex = 
-    taskList.indexOf(task => task.id === id)
+    
     taskList.splice((foundIndex, 1));
 
     objectToExport.remove("tasks");
@@ -83,7 +85,6 @@ const FrameCalen = () => {
 
   const handleSend = () => {
     if (dataTask.start !== "" && dataTask.end !== "" && dataTask.title !== "") {
-      createId();
       setTaskList([...taskList, dataTask]);
       setDataTask({
         title: "",
@@ -92,7 +93,7 @@ const FrameCalen = () => {
         desc: "",
         type: "",
         done: false,
-        id: id,
+        id: idNumber,
       });
       taskLocalStorage.push(dataTask);
       objectToExport.set("tasks", taskLocalStorage);

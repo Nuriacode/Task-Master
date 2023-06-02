@@ -1,8 +1,10 @@
 import "../styles/Task.scss";
 
 const Task = ({ eachTask, getColorTask, setTaskDone }) => {
+
   const handleClick = (ev) => {
     const target = ev.currentTarget.id;
+    console.log(target);
     setTaskDone(target);
   };
 
