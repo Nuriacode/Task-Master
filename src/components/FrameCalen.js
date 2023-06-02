@@ -44,34 +44,6 @@ const FrameCalen = () => {
     setDataTask({ ...dataTask, type: value });
   };
 
-  const setTaskDone = (id) => {
-    console.log(id);
-    const foundIndex = taskList.findIndex(task => task.id === id)
-    console.log(foundIndex);
-    console.log(taskList[foundIndex])
-    taskList[foundIndex].done = true;
-   
-    const taskDone = taskList[foundIndex];
-    setTaskListDone([...taskListDone, taskDone]);
-    
-    taskList.splice((foundIndex, 1));
-
-    objectToExport.remove("tasks");
-    taskDoneLocalStorage.push(taskDone);
-    objectToExport.set("tasks", taskList);
-    objectToExport.set("tasks_Done", taskDoneLocalStorage);
-  };
-
-  const removeTask = (id) => {
-    const foundIndex = 
-    taskList.indexOf(task => task.id === id)
-    taskList.splice((foundIndex, 1));
-  };
-
-  const handleInput = (inputName, inputValue) => {
-    setDataTask({ ...dataTask, [inputValue]: inputName });
-  };
-
   const getColorTask = (taskType) => {
     if (taskType === "Casa") {
       return "color_1";
@@ -82,10 +54,10 @@ const FrameCalen = () => {
     }
   };
 
-
-  const handleSend = () => {
-    if (dataTask.start !== "" && dataTask.end !== "" && dataTask.title !== "") {
+   const handleSend = () => {
+    if (dataTask.start !== "" && dataTask.end !== "" && dataTask.title !== "" && dataTask.type !== "") {
       setTaskList([...taskList, dataTask]);
+      taskLocalStorage.push(dataTask);
       setDataTask({
         title: "",
         start: "",
@@ -95,13 +67,44 @@ const FrameCalen = () => {
         done: false,
         id: idNumber,
       });
-      taskLocalStorage.push(dataTask);
       objectToExport.set("tasks", taskLocalStorage);
     }
   };
 
-  function resetButton() {
+  const setTaskDone = (id) => {
+    console.log(id);
+    const foundIndex = taskList.findIndex(task => task.id === id)
+    console.log(foundIndex);
+    console.log(taskList[foundIndex])
+    taskList[foundIndex].done = true;
+   
+    const taskDone = taskList[foundIndex];
+    taskList.filter(task => task.done === false)
+
+    setTaskListDone([...taskListDone, taskDone]);
+    setTaskList(taskList);
+  
+    taskLocalStorage.splice((foundIndex, 1));
     objectToExport.remove("tasks");
+    taskDoneLocalStorage.push(taskDone);
+    objectToExport.set("tasks", taskList);
+    objectToExport.set("tasks_Done", taskDoneLocalStorage);
+  };
+
+  // const removeTask = (id) => {
+  //   const foundIndex = 
+  //   taskList.indexOf(task => task.id === id)
+  //   taskList.splice((foundIndex, 1));
+  // };
+
+  const handleInput = (inputName, inputValue) => {
+    setDataTask({ ...dataTask, [inputValue]: inputName });
+  };
+
+
+
+  function resetButton() {
+    // objectToExport.remove("tasks");
     objectToExport.remove("tasks_Done");
     setTaskListDone([]);
   }
@@ -121,7 +124,7 @@ const FrameCalen = () => {
         <section className="form">
           <h2 className="form__titleTask">TAREAS POR HACER</h2>
           <TaskList
-            removeTask={removeTask}
+            // removeTask={removeTask}
             className="form__taskList"
             setTaskDone={setTaskDone}
             taskList={taskList}

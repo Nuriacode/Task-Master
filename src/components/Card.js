@@ -50,7 +50,7 @@ const Card = ({
             onInput={changeInput}
           />
         </div>
-        <label className="modal__content__form__label" htmlFor="">
+        <label className="modal__content__form__label" htmlFor="start">
           Fecha de Inicio
           <input
             className="form-control"
@@ -62,7 +62,7 @@ const Card = ({
             onInput={changeInput}
           />
         </label>
-        <label className="modal__content__form__label" htmlFor="">
+        <label className="modal__content__form__label" htmlFor="end">
           Fecha de Fin
           <input
             className="form-control"
@@ -76,6 +76,7 @@ const Card = ({
         </label>
         <fieldset className="modal__content__form__div">
           <input
+            required
             checked={taskType === "Casa"}
             className="modal__content__div--input"
             id="home"
